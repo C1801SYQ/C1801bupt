@@ -1,10 +1,13 @@
 import pygame
 from items.item import Item
 
-class Potion(Item):
-    def __init__(self, heal_amount=20):
-        super().__init__("Potion")
-        self.heal_amount = heal_amount
+# items/potion.py
+
+class Potion:
+    def __init__(self, x, y):
+        self.rect = pygame.Rect(x, y, 16, 16)
+        self.name = "Potion"  # ⭐ 必须有这个
+        self.collected = False
 
     def use(self, player):
-        player.hp = min(player.max_hp, player.hp + self.heal_amount)
+        player.hp = min(player.max_hp, player.hp + 30) # 回复30点血
